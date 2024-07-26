@@ -66,7 +66,7 @@ namespace Needle.HybridPackages
         public string GetExportFilename(string outputSubFolder)
         {
             if (!this) return null;
-            return outputSubFolder + "/HybridPackage_" + Path.GetDirectoryName(AssetDatabase.GetAssetPath(this))
+            return outputSubFolder + "/" + Path.GetDirectoryName(AssetDatabase.GetAssetPath(this))
                        .Replace("\\", "/")
                        .Replace("Assets/", "")
                        .Replace("Packages/", "")
@@ -143,7 +143,7 @@ namespace Needle.HybridPackages
             var outputLocation = Path.GetDirectoryName(Application.dataPath) + "/Temp";
             EditorGUILayout.LabelField(new GUIContent(outputLocation), wordWrapLabel);
 
-            if (GUILayout.Button("Export for Local Testing" + (targets.Length > 1 ? " [" + targets.Length + "]" : "")))
+            if (GUILayout.Button("导出本地 unitypackage 包" + (targets.Length > 1 ? " [" + targets.Length + "]" : "")))
             {
                 foreach (var o in targets)
                 {
@@ -153,7 +153,7 @@ namespace Needle.HybridPackages
                 }
             }
 
-            if (GUILayout.Button("Open Export Folder"))
+            if (GUILayout.Button("打开导出资源目标文件夹"))
             {
                 EditorUtility.RevealInFinder(outputLocation);
             }
